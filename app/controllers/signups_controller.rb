@@ -3,13 +3,13 @@ class SignupsController < ApplicationController
 
     def create
         signup = Signup.create!(signup_params)
-        render json: signup
+        render json: signup, status: :created
     end
 
     private
 
     def signup_params
-        params.permit(:id, :time, :camper_id, :activity_id)
+        params.permit(:time, :camper_id, :activity_id)
     end
 
     def render_unprocessable_entity_response(invalid)
